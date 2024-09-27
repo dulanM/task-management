@@ -1,0 +1,43 @@
+:host {
+  .mat-toolbar {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+    padding: 0 10px;
+  }
+
+  a.active {
+    border-bottom: 2px solid white;
+  }
+
+  button {
+    margin-left: 10px;
+  }
+
+  .tasks-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); // 3 columns, each taking equal space
+    gap: 16px; // Space between the grid items
+    padding: 16px; // Optional padding around the grid
+  }
+
+  @media (max-width: 900px) {
+    .tasks-container {
+      grid-template-columns: repeat(2, 1fr); // 2 columns for medium-sized screens
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .tasks-container {
+      grid-template-columns: 1fr; // Stack cards vertically for smaller screens
+    }
+  }
+}

@@ -1,0 +1,14 @@
+<div>
+  <mat-toolbar color="primary">
+    <span>Welcome, Dulan!</span>
+
+    <!-- Fill the remaining space -->
+    <span class="spacer"></span>
+
+    <!-- Logout Button -->
+    <button mat-stroked-button color="accent" (click)="createTask()">Create Task</button>
+    <button mat-raised-button color="accent" (click)="logout()">Logout</button>
+  </mat-toolbar>
+  <div class="tasks-container">
+    <app-task-details *ngFor="let task of tasks" [task]="task" (viewTask)="viewTask($event)"></app-task-details>
+</div>

@@ -1,0 +1,41 @@
+:host {
+	.login-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+		background-color: #f5f5f5;
+
+		.footer-container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.signup-router {
+			text-align: center;
+			padding-top: 25px;
+
+			a {
+				color: #030ffc !important;
+			}
+		}
+
+		.error-message {
+			color: red !important;
+		}
+	}
+
+	mat-card {
+		width: 400px;
+		padding: 20px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	mat-form-field {
+		width: 100%;
+		margin-bottom: 15px;
+	}
+}

@@ -1,0 +1,32 @@
+<form [formGroup]="taskForm" (ngSubmit)="onSave()">
+    <mat-form-field>
+      <mat-label>Task Title</mat-label>
+      <input matInput formControlName="title" />
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Priority</mat-label>
+      <mat-select formControlName="priority">
+        <mat-option value="LOW">Low</mat-option>
+        <mat-option value="MEDIUM">Medium</mat-option>
+        <mat-option value="HIGH">High</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Status</mat-label>
+      <mat-select formControlName="status">
+        <mat-option value="PENDING">Pending</mat-option>
+        <mat-option value="INPROGRESS">In Progress</mat-option>
+        <mat-option value="DONE">Done</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <button mat-raised-button color="primary" type="submit">Save</button>
+  </form>
+  

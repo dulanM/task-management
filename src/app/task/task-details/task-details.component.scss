@@ -1,0 +1,9 @@
+:host {
+  .task-container :hover {
+    cursor: pointer;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
