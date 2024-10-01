@@ -18,6 +18,7 @@ import { TaskDetailsFormComponent } from '../../task/task-details-form/task-deta
 })
 export class DashboardComponent {
   tasks: Task[] = [];
+  errorMessage = '';
   constructor(private authService: AuthService, private taskService: TaskService, private dialog: MatDialog) {
     this.loadTasks();
   }
@@ -27,22 +28,40 @@ export class DashboardComponent {
   }
 
   loadTasks() {
-    this.taskService.getTasks().subscribe((tasks) => {
-      console.log(tasks)
-      this.tasks = tasks;
-    });
+    this.taskService.getTasks().subscribe(
+      {
+        next: (tasks) => {
+          this.tasks = tasks
+        },
+        error: (err) => {
+          this.errorMessage = err;
+        }
+      }
+    );
   }
   createTask() {
-
+    this.openDialogbox('CREATE');
   }
 
   viewTask(task: Task) {
+    this.openDialogbox('UPDATE', task);
+  }
+
+  openDialogbox(actionType: string, taskDetails?: Task) {
     const dialogRef = this.dialog.open(TaskDetailsFormComponent, {
       autoFocus: false,
-      minWidth: '706px',
-      minHeight: '430px',
-      maxWidth: '706px',
+      minWidth: '600px',
+      minHeight: '400px',
+      maxWidth: '600px',
+      disableClose: true,
+      data: {
+        actionType,
+        task: taskDetails
+      }
     });
-    console.log(task);
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.loadTasks();
+    });
   }
 }

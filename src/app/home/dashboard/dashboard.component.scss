@@ -24,9 +24,13 @@
 
   .tasks-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); // 3 columns, each taking equal space
+    grid-template-columns: repeat(4, 1fr); // 4 columns, each taking equal space
     gap: 16px; // Space between the grid items
     padding: 16px; // Optional padding around the grid
+  }
+
+  .error-message {
+    color: red !important;
   }
 
   @media (max-width: 900px) {

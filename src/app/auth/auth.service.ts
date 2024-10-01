@@ -46,7 +46,7 @@ export class AuthService {
       errorMsg = 'Server error, please try again later!';
     }
 
-    return throwError(errorMsg);
+    return throwError(() => new Error(errorMsg));
   }
 
   private handleSignupError(error: HttpErrorResponse) {
@@ -59,6 +59,6 @@ export class AuthService {
       errorMsg = 'Server error, please try again later!';
     }
 
-    return throwError(errorMsg);
+    return throwError(() => new Error(errorMsg));
   }
 }

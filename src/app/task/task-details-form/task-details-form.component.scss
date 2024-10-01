@@ -1,0 +1,40 @@
+:host {
+  .task-detail-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+
+    .close-btn {
+      align-self: self-end;
+      border-radius: 1000px;
+      margin-bottom: 15px;
+      background-color: #dc3545;
+      color: white;
+    }
+    .create-form-action-container {
+      align-self: center;
+    }
+
+    .update-form-action-container {
+      display: flex;
+      padding-top: 10px;
+      gap: 20px;
+      align-self: center;
+      .update-btn {
+        background-color: #28a745;
+      }
+      .delete-btn {
+        background-color: #dc3545;
+      }
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .error-message {
+    color: red !important;
+  }
+}

@@ -1,14 +1,23 @@
-<form [formGroup]="taskForm" (ngSubmit)="onSave()">
+<div class="task-detail-container">
+  <button class="close-btn" mat-mini-fab (click)="close()">
+    <mat-icon>
+      close
+    </mat-icon>
+  </button>
+  <form [formGroup]="taskForm">
     <mat-form-field>
       <mat-label>Task Title</mat-label>
       <input matInput formControlName="title" />
+      <mat-error *ngIf="taskForm.get('title')?.hasError('required')">
+        Title is required
+      </mat-error>
     </mat-form-field>
-  
+
     <mat-form-field>
       <mat-label>Description</mat-label>
       <textarea matInput formControlName="description"></textarea>
     </mat-form-field>
-  
+
     <mat-form-field>
       <mat-label>Priority</mat-label>
       <mat-select formControlName="priority">
@@ -16,8 +25,11 @@
         <mat-option value="MEDIUM">Medium</mat-option>
         <mat-option value="HIGH">High</mat-option>
       </mat-select>
+      <mat-error *ngIf="taskForm.get('priority')?.hasError('required')">
+        Priority is required
+      </mat-error>
     </mat-form-field>
-  
+
     <mat-form-field>
       <mat-label>Status</mat-label>
       <mat-select formControlName="status">
@@ -25,8 +37,23 @@
         <mat-option value="INPROGRESS">In Progress</mat-option>
         <mat-option value="DONE">Done</mat-option>
       </mat-select>
+      <mat-error *ngIf="taskForm.get('status')?.hasError('required')">
+        Status is required
+      </mat-error>
     </mat-form-field>
-  
-    <button mat-raised-button color="primary" type="submit">Save</button>
+
+    <div class="create-form-action-container" *ngIf="actionType === 'CREATE'">
+      <button mat-flat-button color="primary" (click)="createTask()" [disabled]="!this.taskForm.valid">Create</button>
+    </div>
+    <div class="update-form-action-container" *ngIf="actionType === 'UPDATE'">
+      <button class="update-btn" mat-flat-button (click)="updateTask()"
+        [disabled]="!this.taskForm.valid">Update</button>
+      <button class="delete-btn" mat-flat-button (click)="deleteTask()">Delete</button>
+    </div>
+
+    <!-- Display the error message if one exists -->
+    <div *ngIf="errorMessage" class="error-message">
+      <p>{{ errorMessage }}</p>
+    </div>
   </form>
-  
+</div>

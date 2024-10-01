@@ -1,14 +1,17 @@
 <div>
   <mat-toolbar color="primary">
-    <span>Welcome, Dulan!</span>
+    <span>Task Manager</span>
 
-    <!-- Fill the remaining space -->
     <span class="spacer"></span>
 
     <!-- Logout Button -->
     <button mat-stroked-button color="accent" (click)="createTask()">Create Task</button>
-    <button mat-raised-button color="accent" (click)="logout()">Logout</button>
+    <button mat-raised-button color="warn" (click)="logout()">Logout</button>
   </mat-toolbar>
   <div class="tasks-container">
     <app-task-details *ngFor="let task of tasks" [task]="task" (viewTask)="viewTask($event)"></app-task-details>
+    <!-- Display the error message if one exists -->
+    <div *ngIf="errorMessage" class="error-message">
+      <p>{{ errorMessage }}</p>
+    </div>
 </div>
